@@ -1,0 +1,23 @@
+# Add your Python dependencies here
+pandas
+numpy
+matplotlib
+scikit-learn
+jupyter
+seaborn
+plotly
+scipy
+statsmodels
+xgboost
+lightgbm
+catboost
+mlxtend
+openpyxl
+requests
+beautifulsoup4
+nltk
+spacy
+pycaret
+tensorflow
+keras
+pytorch
