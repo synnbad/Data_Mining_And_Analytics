@@ -8,8 +8,8 @@ import seaborn as sns
 sns.set(style='whitegrid')
 
 def main():
-    repo_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
-    data_path = os.path.join(repo_root, 'data', 'auto-mpg.tab')
+    repo_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
+    data_path = os.path.join(repo_root, 'data', 'raw', 'auto-mpg.tab')
     results_dir = os.path.join(repo_root, 'results')
     os.makedirs(results_dir, exist_ok=True)
 

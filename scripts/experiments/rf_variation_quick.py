@@ -4,13 +4,16 @@ Quick Demonstration: RandomForest Variation
 Shows why RandomForest gives different results each run, even in Weka
 """
 
+import os
 import pandas as pd
 import numpy as np
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import cross_val_score, StratifiedKFold
 
+repo_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
+
 # Load diabetes data
-df = pd.read_csv('data/diabetes.csv')
+df = pd.read_csv(os.path.join(repo_root, 'data', 'processed', 'diabetes.csv'))
 df['class'] = df['class'].map({'tested_negative': 0, 'tested_positive': 1})
 X = df.drop(columns=['class'])
 y = df['class']

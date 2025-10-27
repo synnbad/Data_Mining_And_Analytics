@@ -10,8 +10,9 @@ def main():
     df['Species'] = pd.Categorical.from_codes(data.target, data.target_names)
 
     # Save to repo data folder (absolute path)
-    repo_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
-    out_path = os.path.join(repo_root, 'data', 'iris.tab')
+    repo_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
+    out_path = os.path.join(repo_root, 'data', 'raw', 'iris.tab')
+    os.makedirs(os.path.dirname(out_path), exist_ok=True)
     df.to_csv(out_path, sep='\t', index=False)
     print(f'Saved {df.shape[0]} rows to {out_path}')
 

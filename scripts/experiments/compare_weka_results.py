@@ -2,7 +2,7 @@ import os
 import pandas as pd
 import numpy as np
 
-repo_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+repo_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
 
 # Load our Python results
 python_results = pd.read_csv(os.path.join(repo_root, 'results', 'weka_lab_results.csv'))

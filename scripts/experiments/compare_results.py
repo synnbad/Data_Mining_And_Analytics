@@ -1,7 +1,7 @@
 import pandas as pd
 import os
 
-repo_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+repo_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
 excel_path = os.path.join(repo_root, 'data', 'Week7_Activity_diabetes_dataset.xlsx')
 results_path = os.path.join(repo_root, 'results', 'weka_lab_results.csv')
 out_path = os.path.join(repo_root, 'results', 'accuracy_comparison.csv')
@@ -82,7 +82,18 @@ df_r2['accuracy'] = df_r2['accuracy_mean']
 df_excel_long['classifier_norm'] = df_excel_long['classifier'].str.replace('\n',' ').str.strip().str.lower()
 df_r2['classifier_norm'] = df_r2['classifier'].str.strip().str.lower()
 
-df_merge = pd.merge(df_excel_long, df_r2, left_on=['classifier_norm','variant'], right_on=['classifier_norm','variant'], how='outer', suffixes=('_excel','_ours'))
+# Merge on normalized names and variant
+# Note: df_r2 uses variant column values 'original','discretized','normalized'
+# while df_excel_long variant strings may be capitalized; normalize
+
+df_excel_long['variant'] = df_excel_long['variant'].str.strip().str.lower()
+
+# Attempt merge
+try:
+    df_merge = pd.merge(df_excel_long, df_r2, left_on=['classifier_norm','variant'], right_on=['classifier_norm','variant'], how='outer', suffixes=('_excel','_ours'))
+except Exception as e:
+    print('Merge failed:', e)
+    raise
 
 # Compute difference
 if 'accuracy' in df_merge.columns and 'accuracy_mean' in df_merge.columns:

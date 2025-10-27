@@ -1,7 +1,11 @@
 import pandas as pd
 
 def main():
-    df = pd.read_csv(r'c:\Users\saa24b\Data_Mining_And_Analytics\data\iris.tab', sep='\t')
+    import os
+    repo_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
+    data_path = os.path.join(repo_root, 'data', 'raw', 'iris.tab')
+    
+    df = pd.read_csv(data_path, sep='\t')
 
     # Mean sepal length for setosa
     setosa = df[df['Species'] == 'setosa']

@@ -1,3 +1,8 @@
+"""
+Main Weka Lab Experiment Script
+Runs 10-fold cross-validation on diabetes dataset with 5 classifiers and 3 data variants
+"""
+
 import os
 import numpy as np
 import pandas as pd
@@ -9,8 +14,8 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.svm import SVC
 from sklearn.preprocessing import KBinsDiscretizer, MinMaxScaler
 
-repo_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
-data_path = os.path.join(repo_root, 'data', 'diabetes.csv')
+repo_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
+data_path = os.path.join(repo_root, 'data', 'processed', 'diabetes.csv')
 results_path = os.path.join(repo_root, 'results', 'weka_lab_results.csv')
 
 # Load data

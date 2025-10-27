@@ -1,7 +1,9 @@
+import os
 import pandas as pd
 
 def main():
-    path = r'c:\Users\saa24b\Data_Mining_And_Analytics\data\auto-mpg.tab'
+    repo_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
+    path = os.path.join(repo_root, 'data', 'raw', 'auto-mpg.tab')
     # Read file, skip the second row which contains types
     df = pd.read_csv(path, sep='\t', header=0, skiprows=[1], na_values='?')
     # Ensure numeric columns

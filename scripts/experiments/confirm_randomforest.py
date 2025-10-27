@@ -1,8 +1,16 @@
+"""
+RandomForest Accuracy Confirmation
+Validates RF results against Week 7 reference
+"""
+
+import os
 import pandas as pd
 
+repo_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
+
 # Load data
-weka = pd.read_csv('data/Week7_Activity_diabetes_dataset.csv')
-python_res = pd.read_csv('results/weka_lab_results.csv')
+weka = pd.read_csv(os.path.join(repo_root, 'data', 'processed', 'Week7_Activity_diabetes_dataset.csv'))
+python_res = pd.read_csv(os.path.join(repo_root, 'results', 'weka_lab_results.csv'))
 
 # Convert to percentage
 python_res['accuracy_pct'] = python_res['accuracy_mean'] * 100
